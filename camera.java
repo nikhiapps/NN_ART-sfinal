@@ -22,11 +22,11 @@ public class camera extends AppCompatActivity {
 
 
     }
-  /*  @Override
+    @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent data){
         super.onActivityResult(requestcode, resultcode, data);
         Bitmap bp=(Bitmap) data.getExtras().get("data");
         imageView.setImageBitmap(bp);
-    }*/
+    }
 }
 

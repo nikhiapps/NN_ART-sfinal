@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity
         ImageButton btn1;
         ImageButton btn2;
         ImageButton btn3;
+        ImageButton btn4;
+        ImageButton btn5;
         ImageView imageView;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity
         btn1=(ImageButton)findViewById(R.id.camera1);
         btn2=(ImageButton)findViewById(R.id.effects1);
         btn3=(ImageButton)findViewById(R.id.paint1);
+        btn4=(ImageButton)findViewById(R.id.emoji);
+        btn5=(ImageButton)findViewById(R.id.giphy);
        // setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -63,6 +67,20 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent paint= new Intent(MainActivity.this,paint.class);
                 startActivity(paint);
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emoji= new Intent(MainActivity.this,Emoji.class);
+                startActivity(emoji);
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giphy= new Intent(MainActivity.this,Giphy.class);
+                startActivity(giphy);
             }
         });
 
@@ -116,29 +134,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult (cameraIntent,1);
+            Intent camera= new Intent(MainActivity.this,camera.class);
+            startActivity(camera);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent();
-            intent.setAction(android.content.Intent.ACTION_GET_CONTENT);
-            intent.setType("image/*");
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        }else if (id == R.id.nav_paint) {
+            Intent paint= new Intent(MainActivity.this,paint.class);
+            startActivity(paint);
 
-        } else if (id == R.id.nav_paint) {
 
         } else if (id == R.id.nav_effects) {
-
-        } else if (id == R.id.nav_share) {
-            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-            sharingIntent.setType("text/html");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml("<p>NN's ART APPLICATION</p>"));
-            startActivity(Intent.createChooser(sharingIntent,"Share using"));
-
-        } else if (id == R.id.nav_download) {
+            Intent effects= new Intent(MainActivity.this,effects.class);
+            startActivity(effects);
 
         }
 
@@ -147,3 +155,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+
